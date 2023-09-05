@@ -17,4 +17,9 @@ public class Vista {
             
             return opt;
     }
+    
+    public static String nuevoProducto(){
+
+
+    }
 }
