@@ -10,10 +10,14 @@ public class Controlador{
         int opt = Vista.menuPrincipal(); // menuPrincipal
         //System.out.println("adsas");
         if(opt == 1) {
+
         System.out.println("seleccionaste 1");  
         int resp = Vista.MenuProducto();
                 if(resp == 1)
                     Vista.nuevoProducto();
+           System.out.println("seleccionaste 1");
+            
+
 		}
         else if(opt == 2) {
             System.out.println("Seleccionaste 2 ");
