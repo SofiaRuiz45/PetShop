@@ -13,7 +13,7 @@ public class producto {
     float precio;
     Categoria cat;
     
-    public productoInstaciado(String nombre, float precio, Categoria cat){
+    public producto(String nombre, float precio, Categoria cat){
         super();
         this.nombre= nombre;
         this.precio= precio;
@@ -25,10 +25,10 @@ public class producto {
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
-    public String getPrecio(String precio){
+    public float getPrecio(float precio){
         return precio;
     }
-    public void setPrecio(String precio){
+    public void setPrecio(float precio){
         this.precio = precio;
     }
     public String getCategoria(Categoria cat){
@@ -37,6 +37,7 @@ public class producto {
     public void setCategoria(Categoria cat){
         this.cat = cat;
     }
+      @Override
     public String toString(){
         return "producto: " + nombre + ", precio: "+ precio+ "y categoria: "+ cat;
     }

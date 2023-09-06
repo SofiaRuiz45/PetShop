@@ -7,12 +7,13 @@ package petshop;
 public class Controlador{
     
     	public static void main(String[] args) {
-      
         int opt = Vista.menuPrincipal(); // menuPrincipal
         //System.out.println("adsas");
         if(opt == 1) {
-        System.out.println("seleccionaste 1");
-     
+        System.out.println("seleccionaste 1");  
+        int resp = Vista.MenuProducto();
+                if(resp == 1)
+                    Vista.nuevoProducto();
 		}
         else if(opt == 2) {
             System.out.println("Seleccionaste 2 ");
