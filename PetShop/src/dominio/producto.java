@@ -4,16 +4,20 @@
  */
 package dominio;
 
+import java.util.*;
+
 /**
  *
  * @author merce
  */
-public class producto {
+public class Producto {
       String nombre;
     float precio;
     Categoria cat;
+    //Array para almacenar productos
+    private static ArrayList<Producto> arrayProductos = new ArrayList<>();
     
-    public producto(String nombre, float precio, Categoria cat){
+    public Producto(String nombre, float precio, Categoria cat){
         super();
         this.nombre= nombre;
         this.precio= precio;
@@ -36,6 +40,15 @@ public class producto {
     }
     public void setCategoria(Categoria cat){
         this.cat = cat;
+    }
+     // metodo para eliminar productos del array
+public static void eliminarProducto(Producto producto) {
+        arrayProductos.remove(producto);
+    }
+
+    // metodo para mostrar el array
+    public static ArrayList<Producto> mostrarArray() {
+        return arrayProductos;
     }
       @Override
     public String toString(){

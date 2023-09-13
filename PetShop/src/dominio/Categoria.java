@@ -1,24 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dominio;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 /**
  *
  * @author merce
  */
 public class Categoria {
-    String ArrayList<String> misCategorias;
-   
-    //constructor
-    public Categoria(){
-        misCategorias = new ArrayList<>();
+    private String nombreCat;
+    private int idCategoria;
+    
+    public Categoria(String nombreCat, int idCategoria){
+        super();
+        this.nombreCat = nombreCat;
+        this.idCategoria=idCategoria;
     }
-    public void nuevaCategoria(String cat){
-        misCategorias.add(cat);
+    public String getNombreCat(){
+        return nombreCat;
     }
-    //ver si hacer para eliminar categorias
+    public void setNombreCat(String nombreCat){
+        this.nombreCat = nombreCat;
+    }
+     public int getIdCategoria(){
+        return idCategoria;
+    }
+    public void setIdCategoria(String id_Categoria){
+        this.idCategoria = idCategoria;
+    }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString(){
+        return "categoria id: "+idCategoria +", nombre: "+ nombreCat+ "\n";
+    }
 }
