@@ -1,4 +1,5 @@
 package petshop;
+<<<<<<< Updated upstream
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -43,6 +44,23 @@ public class Modelo {
               listaCategorias.add(unaCategoria);
           }
     }
+=======
+//import dominio.producto;
+import java.util.ArrayList;
+import java.util.Iterator;
+import dominio.Categoria;
+/**
+ *
+ * @author merce
+ */
+public class Modelo {
+    private static ArrayList<Categoria> listaCategorias= new ArrayList<>();
+      public static void anadirCategoria(Categoria unaCategoria){
+          if(! listaCategorias.contains(unaCategoria)){
+              listaCategorias.add(unaCategoria);
+          }
+    }
+>>>>>>> Stashed changes
       public static ArrayList<Categoria> obtenerCategorias(){
        System.out.println("Las categorias son:");
           return listaCategorias;  

@@ -1,5 +1,6 @@
 package petshop;
 import dominio.Categoria;
+<<<<<<< Updated upstream
 import dominio.Producto;
 import java.util.ArrayList;
 
@@ -61,3 +62,50 @@ public class Controlador {
         }
     }
 }
+=======
+import java.util.ArrayList;
+
+public class Controlador{
+    	public static void main(String[] args) {
+            int opt =0;
+            while(opt != 4){
+             opt = Vista.menuPrincipal(); // menuPrincipal
+        
+        if(opt == 1){
+        System.out.println("seleccionaste 1");  
+        int resp = Vista.MenuProducto();
+            if(resp == 1){
+                Vista.nuevoProducto();
+            }   
+	}
+        //gestionar categorias
+        else if(opt == 2) {
+            System.out.println("Seleccionaste 2 ");
+            int opt1 = Vista.menuCategoria();
+            if(opt1 == 1){
+                //añadir categoria
+                Categoria unaCategoria = Vista.nuevaCategoria();
+                Modelo.anadirCategoria(unaCategoria);
+                System.out.println("");
+            }else if(opt1 ==2){
+                //eliminar categoria
+                System.out.println("");
+                int idCat = Vista.obtenerId_Categoria();
+                Modelo.eliminarCategoria(idCat);
+                //Vista.mostrarCategorias(categorias);
+            }else if (opt1 ==3){
+                //mostrar categorias
+                System.out.println("Categorias:");
+                ArrayList<Categoria> categorias = Modelo.obtenerCategorias();
+                Vista.mostrarCategorias(categorias);
+            }
+        }else {
+            System.out.println("Programa finalizado");
+        } 
+            }
+        
+        }
+        }
+        
+
+>>>>>>> Stashed changes

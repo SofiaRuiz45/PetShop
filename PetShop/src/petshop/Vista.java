@@ -1,7 +1,10 @@
 package petshop;
 import java.util.Scanner;
 import dominio.Categoria;
+<<<<<<< Updated upstream
 import dominio.Producto;
+=======
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 
 /**
@@ -21,7 +24,8 @@ public class Vista {
             int resp=lector.nextInt();
             
             return resp;
-    }public static int MenuProducto(){
+            
+    }public static int MenuProducto(){ 
         Scanner datos = new Scanner(System.in);
         System.out.println("1-Añadir producto\n 2- Eliminar producto\n 3-Modificar producto");
         //replantear la idea de modificar
@@ -48,6 +52,7 @@ public static Producto nuevoProducto(){
     public static Producto eliminarProducto(){
         System.out.println("");
     }
+<<<<<<< Updated upstream
 //    
 //    opcion 3 de menuProducto
 //    public static Producto ModificarProducto(){
@@ -60,6 +65,13 @@ public static Producto nuevoProducto(){
 
 
 
+=======
+    //opcion 3 de menuProducto
+    public static Producto ModificarProducto(){
+        System.out.println("");
+    }*/
+    //menu de categoria
+>>>>>>> Stashed changes
    public static int menuCategoria(){
        Scanner datos2 = new Scanner (System.in);
        System.out.println("1-Agregar una categoria \n2-Eliminar una categoria \n 3-mostrar Categorias");
@@ -96,5 +108,8 @@ public static Producto nuevoProducto(){
        return num;
      
    }
+<<<<<<< Updated upstream
    
+=======
+>>>>>>> Stashed changes
 }
