@@ -1,6 +1,7 @@
 package petshop;
 import java.util.Scanner;
 import dominio.Categoria;
+import dominio.Producto;
 import java.util.ArrayList;
 
 /**
@@ -8,6 +9,7 @@ import java.util.ArrayList;
  * @author merce
  */
 public class Vista {
+
     
     public static int menuPrincipal(){
             Scanner lector= new Scanner(System.in);
@@ -28,27 +30,36 @@ public class Vista {
     }
     
     //opcion 1 de menuProducto
-   public static void nuevoProducto(){
-        Scanner datos= new Scanner (System.in);
-        System.out.println("ingrese el nombre");
-        String nom = datos.next();
-        System.out.println("Ingrese el precio");
-        float precio = datos.nextFloat();
-        System.out.println("Ingrese el id de la categoria");
-        int idCat= datos.nextInt();
-        
-        String tot = (nom+ " "+precio+" "+ idCat);
-        System.out.println(tot);
-    } /*
-    //opcion2 de menuProducto
+public static Producto nuevoProducto(){
+    Scanner datos = new Scanner(System.in);
+    System.out.println("Ingrese el nombre");
+    String nom = datos.next();
+    System.out.println("Ingrese el precio");
+    float preci = datos.nextFloat();
+    System.out.println("Ingrese la categoría");
+    String catt = datos.next();
+
+    // Devuelve el objeto Producto creado
+    Producto producto = new Producto(nom, preci, catt);
+     return producto;
+}
+
+//    opcion2 de menuProducto
     public static Producto eliminarProducto(){
         System.out.println("");
     }
-    //opcion 3 de menuProducto
-    public static Producto ModificarProducto(){
-        System.out.println("");
-    }*/
-    //menu de categoria
+//    
+//    opcion 3 de menuProducto
+//    public static Producto ModificarProducto(){
+//        System.out.println("");
+//    }
+//    menu de categoria
+
+
+
+
+
+
    public static int menuCategoria(){
        Scanner datos2 = new Scanner (System.in);
        System.out.println("1-Agregar una categoria \n2-Eliminar una categoria \n 3-mostrar Categorias");
