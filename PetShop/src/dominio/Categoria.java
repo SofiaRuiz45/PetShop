@@ -1,65 +1,32 @@
-
 package dominio;
-//import java.util.ArrayList;
 
-/**
- *
- * @author merce
- */
 public class Categoria {
     private String nombreCat;
     private int idCategoria;
-<<<<<<< Updated upstream
-    
-    public Categoria(String nombreCat, int idCategoria){
-        super();
+
+    public Categoria(String nombreCat, int idCategoria) {
         this.nombreCat = nombreCat;
-        this.idCategoria=idCategoria;
-    }
-    public String getNombreCat(){
-        return nombreCat;
-    }
-    public void setNombreCat(String nombreCat){
-        this.nombreCat = nombreCat;
-    }
-     public int getIdCategoria(){
-        return idCategoria;
-    }
-    public void setIdCategoria(String id_Categoria){
         this.idCategoria = idCategoria;
     }
 
-    /**
-     *
-     * @return
-     */
-=======
-
-   
-    public Categoria(String nombreCat, int idCategoria){
-        super();
-        this.nombreCat = nombreCat;
-        this.idCategoria=idCategoria;
-    }
-    public String getNombreCat(){
+    public String getNombreCat() {
         return nombreCat;
     }
-    public void setNombreCat(String nombreCat){
+
+    public void setNombreCat(String nombreCat) {
         this.nombreCat = nombreCat;
     }
-     public int getIdCategoria(){
+
+    public int getIdCategoria() {
         return idCategoria;
     }
-    public void setIdCategoria(String id_Categoria){
+
+    public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
-    
-    
-    
-    
->>>>>>> Stashed changes
+
     @Override
-    public String toString(){
-        return "categoria id: "+idCategoria +", nombre: "+ nombreCat+ "\n";
+    public String toString() {
+        return "Categoría ID: " + idCategoria + ", Nombre: " + nombreCat + "\n";
     }
 }
