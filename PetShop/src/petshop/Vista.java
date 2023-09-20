@@ -18,11 +18,11 @@ public class Vista {
 
         return resp;
     }
-
+            // menu producto
     public static int MenuProducto() {
         Scanner datos = new Scanner(System.in);
-        System.out.println("1-Mostrar productos");
-        System.out.println("2-Añadir producto");
+        System.out.println("1-Añadir producto");
+        System.out.println("2-Mostrar productos");
         System.out.println("3-Modificar producto");
         System.out.println("4-Eliminar producto");
         int opt = datos.nextInt();
@@ -30,7 +30,7 @@ public class Vista {
     }
 
     // Opción 1 de menuProducto
-    public static Producto nuevoProducto() {
+    public static Producto menuNuevoProducto() {
         Scanner datos = new Scanner(System.in);
         System.out.println("Ingrese el nombre");
         String nom = datos.next();
@@ -43,7 +43,15 @@ public class Vista {
         Producto producto = new Producto(nom, preci, catt);
         return producto;
     }
-
+    //Opción 2 de menuProducto
+    
+public static void mostrarListaProducto(ArrayList<Producto> listaProductos) {
+    for (Producto producto : listaProductos) {
+        System.out.println(producto);
+    }
+}
+    
+    
     public static int menuCategoria() {
         Scanner datos2 = new Scanner(System.in);
         System.out.println("1-Agregar una categoría");

@@ -1,4 +1,4 @@
-import java.util.*;
+package dominio;
 import java.io.Serializable;
 
 public class Producto implements Serializable {

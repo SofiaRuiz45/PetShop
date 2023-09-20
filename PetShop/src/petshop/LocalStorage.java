@@ -10,7 +10,7 @@ public static void setItem(String nombre, Object objeto){
 	    objetoSalida.writeObject(objeto);
 	    objetoSalida.close();
 	    archivoSalida.close();
-	    System.out.println("Objeto serializado y guardado en archivo.ser");
+            System.out.println("guardado completo");
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}        
@@ -25,7 +25,7 @@ public static void setItem(String nombre, Object objeto){
 		    objetoDeserializado = objetoEntrada.readObject();
 		    objetoEntrada.close();
 		    archivoEntrada.close();
-		    System.out.println("Objeto deserializado desde archivo.ser");
+                    System.out.println("recuperado correctamente");
 		} catch (IOException | ClassNotFoundException e) {
 		    e.printStackTrace();
 		}
