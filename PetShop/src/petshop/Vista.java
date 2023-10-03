@@ -1,7 +1,7 @@
 package petshop;
 
-import dominio.Categoria;
 import dominio.Producto;
+import dominio.Cliente;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,8 +18,9 @@ public class Vista {
 
         return resp;
     }
-            // menu producto
-    public static int MenuProducto() {
+
+    // Menú de productos
+    public static int menuProducto() {
         Scanner datos = new Scanner(System.in);
         System.out.println("1-Añadir producto");
         System.out.println("2-Mostrar productos");
@@ -43,53 +44,87 @@ public class Vista {
         Producto producto = new Producto(nom, preci, catt);
         return producto;
     }
-    //Opción 2 de menuProducto
-    
-public static void mostrarListaProducto(ArrayList<Producto> listaProductos) {
-    for (Producto producto : listaProductos) {
-        System.out.println(producto);
-    }
-}
-    
-    
-    public static int menuCategoria() {
-        Scanner datos2 = new Scanner(System.in);
-        System.out.println("1-Agregar una categoría");
-        System.out.println("2-Eliminar una categoría");
-        System.out.println("3-Mostrar Categorías");
-        int opc = datos2.nextInt();
-        return opc;
-    }
 
-    // Añadir categoría
-    public static Categoria nuevaCategoria() {
-        Scanner datos3 = new Scanner(System.in);
-        System.out.print("Ingresa el nombre de la categoría\n");
-        String catNue = datos3.next();
-        System.out.println("Ingresa el código de la categoría\n");
-        int numCat = datos3.nextInt();
-        Categoria unaCategoria = new Categoria(catNue, numCat);
-        Modelo.anadirCategoria(unaCategoria);
-
-        return unaCategoria;
-    }
-
-    // Mostrar categorías
-    public static void mostrarCategorias(ArrayList<Categoria> categorias) {
-        System.out.println("Categorías:");
-        for (Categoria categoria : categorias) {
-            System.out.println(categoria);
+    // Opción 2 de menuProducto
+    public static void mostrarListaProducto(ArrayList<Producto> listaProductos) {
+        for (Producto producto : listaProductos) {
+            System.out.println(producto);
         }
     }
 
-    // Eliminar categoría
-    public static int obtenerId_Categoria() {
-        Scanner datos4 = new Scanner(System.in);
-        System.out.println("Categorías:");
-        ArrayList<Categoria> categorias = Modelo.obtenerCategorias();
-        mostrarCategorias(categorias);
-        System.out.println("Ingresa el ID de la categoría a borrar");
-        int num = datos4.nextInt();
-        return num;
+    public static Producto modificarProducto(ArrayList<Producto> listaProductos) {
+        Scanner lector = new Scanner(System.in);
+        System.out.print("Ingrese el nombre del producto a modificar: ");
+        String nombre = lector.next();
+
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equals(nombre)) {
+                System.out.println("Producto encontrado. Ingrese los nuevos datos:");
+
+                System.out.print("Nuevo nombre: ");
+                String nuevoNombre = lector.next();
+
+                System.out.print("Nuevo precio: ");
+                float nuevoPrecio = lector.nextFloat();
+
+                System.out.print("Nueva categoría: ");
+                String nuevaCategoria = lector.next();
+
+                producto.setNombre(nuevoNombre);
+                producto.setPrecio(nuevoPrecio);
+                producto.setCategoria(nuevaCategoria);
+
+                System.out.println("Producto modificado exitosamente.");
+                return producto;
+            }
+        }
+
+        System.out.println("Producto no encontrado. No se pudo modificar.");
+        return null;
+    }
+
+    public static Producto eliminarProducto(ArrayList<Producto> listaProductos) {
+        Scanner lector = new Scanner(System.in);
+        System.out.print("Ingrese el nombre del producto a eliminar: ");
+        String nombre = lector.next();
+
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equalsIgnoreCase(nombre)) {
+                listaProductos.remove(producto);
+                System.out.println("Producto eliminado exitosamente.");
+                return producto;
+            }
+        }
+
+        System.out.println("Producto no encontrado. No se pudo eliminar.");
+        return null;
+    }
+
+    public static int menuCliente() {
+        Scanner dat = new Scanner(System.in);
+        System.out.println("Menú de opciones:");
+        System.out.println("1. Agregar un cliente");
+        System.out.println("2. Eliminar un cliente");
+        System.out.println("3. Modificar un cliente");
+        System.out.println("4. Mostrar clientes");
+        System.out.println("5. Salir");
+        System.out.print("Seleccione una opción: ");
+        int resp = dat.nextInt();
+        return resp;
+    }
+
+    public static void mostrarListaClientes(ArrayList<Cliente> listaClientes) {
+        if (listaClientes.isEmpty()) {
+            System.out.println("La lista de clientes está vacía.");
+        } else {
+            System.out.println("Lista de clientes:");
+            for (Cliente cliente : listaClientes) {
+                System.out.println("Nombre: " + cliente.getNombreCliente());
+                System.out.println("ID: " + cliente.getIdCliente());
+                System.out.println("Teléfono: " + cliente.getTelefonoCliente());
+                System.out.println("Dirección: " + cliente.getDireccionCliente());
+                System.out.println();
+            }
+        }
     }
 }

@@ -32,5 +32,3 @@ public static void setItem(String nombre, Object objeto){
 		return objetoDeserializado;
 	}
 }
-
-

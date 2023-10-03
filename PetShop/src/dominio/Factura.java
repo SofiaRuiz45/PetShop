@@ -1,12 +1,18 @@
+package dominio;
+
 import java.util.Random;
 
+
+
+//tiene que heredar de la clase Producto y de la clase Cliente
 public class Factura {
-    private String nombreProducto;
+    private String nombreProducto; //esto heredado
     private String categoriaProducto;
-    private double precio;
+    private double precio; //esto heredado
     private int cantidad;
     private int codigoFactura;
-
+    //falta la fecha
+    //faltan los datos del clientee
     public Factura(String nombreProducto, String categoriaProducto, double precio, int cantidad) {
         this.nombreProducto = nombreProducto;
         this.categoriaProducto = categoriaProducto;
