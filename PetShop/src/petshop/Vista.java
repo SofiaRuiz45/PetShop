@@ -11,7 +11,7 @@ public class Vista {
         Scanner lector = new Scanner(System.in);
         System.out.println("Bienvenido a Pulguitas PetShop");
         System.out.println("Seleccione 1 para gestionar productos");
-        System.out.println("Seleccione 2 para gestionar categorías");
+        System.out.println("Seleccione 2 para gestionar clientes");
         System.out.println("Seleccione 3 para realizar una venta");
         System.out.println("Seleccione 4 para finalizar");
         int resp = lector.nextInt();
@@ -100,6 +100,8 @@ public class Vista {
         return null;
     }
 
+    
+    
     public static int menuCliente() {
         Scanner dat = new Scanner(System.in);
         System.out.println("Menú de opciones:");
@@ -113,6 +115,72 @@ public class Vista {
         return resp;
     }
 
+        public static void agregarNuevoCliente(ArrayList<Cliente> listaClientes) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el nombre del cliente: ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("Ingrese el ID del cliente: ");
+        int id = scanner.nextInt();
+
+        System.out.print("Ingrese el teléfono del cliente: ");
+        int telefono = scanner.nextInt();
+
+        scanner.nextLine(); // Consumir el salto de línea
+
+        System.out.print("Ingrese la dirección del cliente: ");
+        String direccion = scanner.nextLine();
+
+        Cliente nuevoCliente = new Cliente(nombre, id, telefono, direccion);
+        listaClientes.add(nuevoCliente);
+        System.out.println("Cliente agregado con éxito.");
+    }
+    
+    public static void eliminarCliente(ArrayList<Cliente> listaClientes) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el ID del cliente a eliminar: ");
+        int id = scanner.nextInt();
+
+        for (int i = 0; i < listaClientes.size(); i++) {
+            Cliente cliente = listaClientes.get(i);
+            if (cliente.getIdCliente() == id) {
+                listaClientes.remove(i);
+                System.out.println("Cliente eliminado con éxito.");
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado. No se pudo eliminar.");
+    }
+    
+    public static void modificarCliente(ArrayList<Cliente> listaClientes) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el ID del cliente a modificar: ");
+        int id = scanner.nextInt();
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getIdCliente() == id) {
+                scanner.nextLine(); // Consumir el salto de línea
+                System.out.print("Ingrese el nuevo nombre del cliente: ");
+                String nuevoNombre = scanner.nextLine();
+
+                System.out.print("Ingrese el nuevo teléfono del cliente: ");
+                int nuevoTelefono = scanner.nextInt();
+
+                scanner.nextLine(); // Consumir el salto de línea
+
+                System.out.print("Ingrese la nueva dirección del cliente: ");
+                String nuevaDireccion = scanner.nextLine();
+
+                cliente.modificarCliente(nuevoNombre, nuevoTelefono, nuevaDireccion);
+                System.out.println("Cliente modificado con éxito.");
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado. No se pudo modificar.");
+    }
+
+    
     public static void mostrarListaClientes(ArrayList<Cliente> listaClientes) {
         if (listaClientes.isEmpty()) {
             System.out.println("La lista de clientes está vacía.");

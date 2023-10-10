@@ -10,10 +10,8 @@ public class Controlador {
     // Lista estática para almacenar productos
     private static ArrayList<Producto> arrayProductos = new ArrayList<>();
 
-    public static void agregarProducto(Producto producto) {
-        arrayProductos.add(producto);
-    }
-
+    private static ArrayList<Cliente> arrayClientes = new ArrayList<>();
+    
     public static void main(String[] args) {
         int opt = 0;
         while (opt != 4) {
@@ -33,6 +31,7 @@ public class Controlador {
                 } else if (resp == 2) {
                     System.out.println("\nSeleccionaste mostrar productos");
                     Vista.mostrarListaProducto(arrayProductos);
+                    
 
                 } else if (resp == 3) {
                     System.out.println("Seleccionaste Modificar producto");
@@ -58,20 +57,22 @@ public class Controlador {
 
                 if (resp == 1) {
                     System.out.println("Seleccionaste agregar un nuevo cliente");
-                    // Agregar aquí la lógica para agregar un nuevo cliente
+                    Vista.agregarNuevoCliente(arrayClientes);
                 } else if (resp == 2) {
                     System.out.println("Seleccionaste eliminar un cliente");
-                    // Agregar aquí la lógica para eliminar un cliente
+                    Vista.eliminarCliente(arrayClientes);
                 } else if (resp == 3) {
                     System.out.println("Seleccionaste modificar un cliente");
-                    // Agregar aquí la lógica para modificar un cliente
+                    Vista.modificarCliente(arrayClientes);
                 } else if (resp == 4) {
                     System.out.println("Seleccionaste mostrar clientes");
-                    // Agregar aquí la lógica para mostrar clientes
+                    Vista.mostrarListaClientes(arrayClientes);
                 } else if (resp == 5) {
                     System.out.println("Saliendo del programa...");
+                    
                 } else {
                     System.out.println("Opción no válida. Intente de nuevo.");
+                    
                 }
             }
         }
