@@ -41,4 +41,40 @@ public class Factura {
         Factura factura1 = new Factura("Comida para perro", "Alimentos", 10.99, 3);
         factura1.imprimirFactura();
     }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getCategoriaProducto() {
+        return categoriaProducto;
+    }
+
+    public void setCategoriaProducto(String categoriaProducto) {
+        this.categoriaProducto = categoriaProducto;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getCodigoFactura() {
+        return codigoFactura;
+    }
 }

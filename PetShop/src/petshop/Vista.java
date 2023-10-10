@@ -195,4 +195,16 @@ public class Vista {
             }
         }
     }
+    public static int menuVenta(){
+         Scanner dat = new Scanner(System.in);
+        System.out.println("Menú de venta:");
+        System.out.println("1. Agregar un cliente");
+        System.out.println("2. Eliminar un cliente");
+        System.out.println("3. Modificar un cliente");
+        System.out.println("4. Mostrar clientes");
+        System.out.println("5. Salir");
+        System.out.print("Seleccione una opción: ");
+        int resp = dat.nextInt();
+        return resp;
+    }
 }

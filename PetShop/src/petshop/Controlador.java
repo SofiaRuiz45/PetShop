@@ -74,6 +74,22 @@ public class Controlador {
                     System.out.println("Opción no válida. Intente de nuevo.");
                     
                 }
+            } else if (opt == 3) {
+                // Opción para trabajar con clientes
+                System.out.println("\nSeleccionaste Menu de Venta");
+                int resp = Vista.menuVenta();
+
+                if (resp == 1) {
+                    System.out.println("Seleccionaste agregar un nuevo cliente");
+                    Vista.agregarNuevoCliente(arrayClientes);
+                } else if (resp == 2) {
+                    System.out.println("Seleccionaste eliminar un cliente");
+                    Vista.eliminarCliente(arrayClientes);
+                } else if (resp == 3) {
+                    System.out.println("Seleccionaste modificar un cliente");
+                    Vista.modificarCliente(arrayClientes);
+                    
+                }
             }
         }
     }
