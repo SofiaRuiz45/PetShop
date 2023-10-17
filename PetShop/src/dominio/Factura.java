@@ -3,20 +3,12 @@ package dominio;
 import java.util.Random;
 
 
+public class Factura  {
 
-//tiene que heredar de la clase Producto y de la clase Cliente
-public class Factura {
-    private String nombreProducto; //esto heredado
-    private String categoriaProducto;
-    private double precio; //esto heredado
     private int cantidad;
     private int codigoFactura;
-    //falta la fecha
-    //faltan los datos del clientee
-    public Factura(String nombreProducto, String categoriaProducto, double precio, int cantidad) {
-        this.nombreProducto = nombreProducto;
-        this.categoriaProducto = categoriaProducto;
-        this.precio = precio;
+
+    public Factura( double precio, int cantidad) {
         this.cantidad = cantidad;
         this.codigoFactura = generarCodigoFactura();
     }
@@ -26,44 +18,10 @@ public class Factura {
         Random rand = new Random();
         return rand.nextInt(10000) + 1000; // Números entre 1000 y 19999
     }
-
-    public void imprimirFactura() {
-        System.out.println("***** Factura *****");
-        System.out.println("Código de Factura: " + codigoFactura);
-        System.out.println("Nombre del Producto: " + nombreProducto);
-        System.out.println("Categoría del Producto: " + categoriaProducto);
-        System.out.println("Precio Unitario: $" + precio);
-        System.out.println("Cantidad: " + cantidad);
-        System.out.println("Total a Pagar: $" + (precio * cantidad));
-    }
-
-    public static void main(String[] args) {
-        Factura factura1 = new Factura("Comida para perro", "Alimentos", 10.99, 3);
-        factura1.imprimirFactura();
-    }
-
-    public String getNombreProducto() {
-        return nombreProducto;
-    }
-
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
-    }
-
-    public String getCategoriaProducto() {
-        return categoriaProducto;
-    }
-
-    public void setCategoriaProducto(String categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    
+    @Override
+    public String toString() {
+        return "Factura{" + "cantidad=" + cantidad + ", codigoFactura=" + codigoFactura + '}';
     }
 
     public int getCantidad() {

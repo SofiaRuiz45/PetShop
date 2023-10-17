@@ -34,7 +34,7 @@ public class Vista {
     public static Producto menuNuevoProducto() {
         Scanner datos = new Scanner(System.in);
         System.out.println("Ingrese el nombre");
-        String nom = datos.next();
+        String nom = datos.nextLine();
         System.out.println("Ingrese el precio");
         float preci = datos.nextFloat();
         System.out.println("Ingrese la categoría");
@@ -45,10 +45,14 @@ public class Vista {
         return producto;
     }
 
-    // Opción 2 de menuProducto
     public static void mostrarListaProducto(ArrayList<Producto> listaProductos) {
+                if (listaProductos.isEmpty()) {
+            System.out.println("La lista de productos está vacía.");
+        } else {
+            System.out.println("Lista de productos:");
         for (Producto producto : listaProductos) {
             System.out.println(producto);
+        }
         }
     }
 
@@ -91,7 +95,6 @@ public class Vista {
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equalsIgnoreCase(nombre)) {
                 listaProductos.remove(producto);
-                System.out.println("Producto eliminado exitosamente.");
                 return producto;
             }
         }
@@ -100,8 +103,6 @@ public class Vista {
         return null;
     }
 
-    
-    
     public static int menuCliente() {
         Scanner dat = new Scanner(System.in);
         System.out.println("Menú de opciones:");
@@ -115,7 +116,7 @@ public class Vista {
         return resp;
     }
 
-        public static void agregarNuevoCliente(ArrayList<Cliente> listaClientes) {
+    public static Cliente agregarNuevoCliente() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingrese el nombre del cliente: ");
@@ -127,17 +128,17 @@ public class Vista {
         System.out.print("Ingrese el teléfono del cliente: ");
         int telefono = scanner.nextInt();
 
-        scanner.nextLine(); // Consumir el salto de línea
+        scanner.nextLine();
 
         System.out.print("Ingrese la dirección del cliente: ");
         String direccion = scanner.nextLine();
 
-        Cliente nuevoCliente = new Cliente(nombre, id, telefono, direccion);
-        listaClientes.add(nuevoCliente);
-        System.out.println("Cliente agregado con éxito.");
+                // Devuelve el objeto Cliente creado
+        Cliente cliente = new Cliente(nombre, id, telefono, direccion);
+        return cliente;
     }
     
-    public static void eliminarCliente(ArrayList<Cliente> listaClientes) {
+    public static Cliente eliminarCliente(ArrayList<Cliente> listaClientes) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese el ID del cliente a eliminar: ");
         int id = scanner.nextInt();
@@ -146,20 +147,23 @@ public class Vista {
             Cliente cliente = listaClientes.get(i);
             if (cliente.getIdCliente() == id) {
                 listaClientes.remove(i);
-                System.out.println("Cliente eliminado con éxito.");
-                return;
+                return cliente;
             }
         }
         System.out.println("Cliente no encontrado. No se pudo eliminar.");
+        return null;
     }
     
-    public static void modificarCliente(ArrayList<Cliente> listaClientes) {
+    public static Cliente modificarCliente(ArrayList<Cliente> listaClientes) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese el ID del cliente a modificar: ");
         int id = scanner.nextInt();
+        
 
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getIdCliente() == id) {
+                
+            Cliente cliente = listaClientes.get(i);
+            
+            if(cliente.getIdCliente()==id){
                 scanner.nextLine(); // Consumir el salto de línea
                 System.out.print("Ingrese el nuevo nombre del cliente: ");
                 String nuevoNombre = scanner.nextLine();
@@ -171,30 +175,30 @@ public class Vista {
 
                 System.out.print("Ingrese la nueva dirección del cliente: ");
                 String nuevaDireccion = scanner.nextLine();
-
-                cliente.modificarCliente(nuevoNombre, nuevoTelefono, nuevaDireccion);
-                System.out.println("Cliente modificado con éxito.");
-                return;
-            }
-        }
+                
+                Cliente cliente2 = new Cliente (nuevoNombre,id,nuevoTelefono,nuevaDireccion);            
+                return cliente2;
+            } 
+                
+                
+            
+        
         System.out.println("Cliente no encontrado. No se pudo modificar.");
+        return null;
     }
 
-    
     public static void mostrarListaClientes(ArrayList<Cliente> listaClientes) {
         if (listaClientes.isEmpty()) {
             System.out.println("La lista de clientes está vacía.");
         } else {
             System.out.println("Lista de clientes:");
-            for (Cliente cliente : listaClientes) {
-                System.out.println("Nombre: " + cliente.getNombreCliente());
-                System.out.println("ID: " + cliente.getIdCliente());
-                System.out.println("Teléfono: " + cliente.getTelefonoCliente());
-                System.out.println("Dirección: " + cliente.getDireccionCliente());
-                System.out.println();
+            for (int i = 0; i < listaClientes.size(); i++) {
+                Cliente cliente = listaClientes.get(i);
+                System.out.println(cliente);
+}
             }
         }
-    }
+    
     public static int menuVenta(){
          Scanner dat = new Scanner(System.in);
         System.out.println("Menú de venta:");
