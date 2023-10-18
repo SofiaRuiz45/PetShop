@@ -1,8 +1,8 @@
 package dominio;
-
+import java.io.Serializable;
 import java.util.Random;
 
-public class Factura {
+public class Factura implements Serializable{
 
     private int codigoFactura;
     private Producto productoVendido;

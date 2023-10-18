@@ -14,7 +14,7 @@ public class Vista {
         System.out.println("Seleccione 1 para gestionar productos");
         System.out.println("Seleccione 2 para gestionar clientes");
         System.out.println("Seleccione 3 para realizar una venta");
-        System.out.println("Seleccione 4 para finalizar");
+        System.out.println("Seleccione 4 mostrar las facturas");
         int resp = lector.nextInt();
 
         return resp;
@@ -237,7 +237,6 @@ public class Vista {
         }
 
         if (productoVendido != null && clienteComprador != null) {
-            // Generar una nueva factura para representar la venta
             Factura factura = new Factura(productoVendido, clienteComprador, cantidad);
             return factura;
         } else {
@@ -245,6 +244,15 @@ public class Vista {
             return null;
         }
     }
-
-
+    
+    public static void mostrarFacturas(ArrayList<Factura> facturas) {
+    if (facturas.isEmpty()) {
+        System.out.println("No hay facturas disponibles.");
+    } else {
+        System.out.println("Lista de Facturas:");
+        for (Factura factura : facturas) {
+            System.out.println(factura);
+        }
+    }
+}
 }

@@ -20,7 +20,7 @@ public class Modelo {
     }
     
     public static void cargarFacturas() {
-        ArrayList<Factura> facturas = (ArrayList<Factura>) LocalStorage.getItem("archivo_facturas.txt");
+        ArrayList<Factura> facturas = (ArrayList<Factura>) LocalStorage.getItem("archivo_factura.txt");
         if (facturas != null) {
             arrayFactura = facturas;
         }
@@ -34,7 +34,7 @@ public class Modelo {
         return (ArrayList<Producto>) LocalStorage.getItem(nomArchivo);
     }
 
-        public static void agregarProducto(Producto producto) {
+    public static void agregarProducto(Producto producto) {
         arrayProductos.add(producto);
         guardarArrayProductos(arrayProductos);
     }
@@ -105,6 +105,16 @@ public class Modelo {
         }
         guardarArrayClientes(arrayClientes);
     }
+    
+    public static void agregarFactura(Factura factura) {
+        arrayFactura.clear();
+        arrayFactura.add(factura);
+        guardarArrayFacturas(arrayFactura);
+    }
+    
+    public static ArrayList<Factura> buscarArrayFacturas() {
+    return arrayFactura;
+}
     
     public static void guardarArrayProductos(ArrayList<Producto> arrayProductos) {
         if (arrayProductos != null) {

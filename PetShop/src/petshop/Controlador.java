@@ -2,13 +2,16 @@ package petshop;
 
 import dominio.Producto;
 import dominio.Cliente;
+import dominio.Factura;
 import java.util.ArrayList;
 
 public class Controlador {
     public static void main(String[] args) {
         Modelo.cargarProductos(); // Cargar productos y clientes al inicio
         Modelo.cargarClientes();
+        Modelo.cargarFacturas();
         int opt = 0;
+        Factura factura = null;
         
         while (opt != 4) {
             // Menú principal
@@ -84,17 +87,20 @@ public class Controlador {
                         break;  // vuelve al menú principal
                     }
                 }
-            }else if (opt == 3) {
-
+            } else if (opt == 3) {
                 System.out.println("\nSeleccionaste Menú ventas");
+                ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
+                ArrayList<Cliente> busquedaa = Modelo.buscarArrayClien();
+                Vista.mostrarListaProducto(busqueda);
+                Vista.mostrarListaClientes(busquedaa);
 
-                        ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
-                        ArrayList<Cliente> busquedaa = Modelo.buscarArrayClien();
-                        Vista.mostrarListaProducto(busqueda);
-                        Vista.mostrarListaClientes(busquedaa);
-                        Vista.venderProducto(busqueda,busquedaa);
-                        //Modelo.
-
+                factura = Vista.venderProducto(busqueda, busquedaa);
+                if (factura != null) {
+                    Modelo.agregarFactura(factura);
+                }
+            } else if (opt == 4) {
+                ArrayList<Factura> facturas = Modelo.buscarArrayFacturas();
+                Vista.mostrarFacturas(facturas);
             }
         }
     }
