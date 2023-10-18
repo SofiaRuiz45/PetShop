@@ -1,7 +1,7 @@
 package petshop;
-
 import dominio.Producto;
 import dominio.Cliente;
+import dominio.Factura;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +9,7 @@ public class Vista {
 
     public static int menuPrincipal() {
         Scanner lector = new Scanner(System.in);
+        System.out.println("");
         System.out.println("Bienvenido a Pulguitas PetShop");
         System.out.println("Seleccione 1 para gestionar productos");
         System.out.println("Seleccione 2 para gestionar clientes");
@@ -26,6 +27,7 @@ public class Vista {
         System.out.println("2-Mostrar productos");
         System.out.println("3-Modificar producto");
         System.out.println("4-Eliminar producto");
+        System.out.println("0-Volver al menu anterior");
         int opt = datos.nextInt();
         return opt;
     }
@@ -59,14 +61,14 @@ public class Vista {
     public static Producto modificarProducto(ArrayList<Producto> listaProductos) {
         Scanner lector = new Scanner(System.in);
         System.out.print("Ingrese el nombre del producto a modificar: ");
-        String nombre = lector.next();
+        String nombre = lector.nextLine();
 
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equals(nombre)) {
                 System.out.println("Producto encontrado. Ingrese los nuevos datos:");
 
                 System.out.print("Nuevo nombre: ");
-                String nuevoNombre = lector.next();
+                String nuevoNombre = lector.nextLine();
 
                 System.out.print("Nuevo precio: ");
                 float nuevoPrecio = lector.nextFloat();
@@ -94,11 +96,9 @@ public class Vista {
 
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equalsIgnoreCase(nombre)) {
-                listaProductos.remove(producto);
                 return producto;
             }
         }
-
         System.out.println("Producto no encontrado. No se pudo eliminar.");
         return null;
     }
@@ -106,12 +106,12 @@ public class Vista {
     public static int menuCliente() {
         Scanner dat = new Scanner(System.in);
         System.out.println("Menú de opciones:");
-        System.out.println("1. Agregar un cliente");
-        System.out.println("2. Eliminar un cliente");
-        System.out.println("3. Modificar un cliente");
-        System.out.println("4. Mostrar clientes");
-        System.out.println("5. Salir");
-        System.out.print("Seleccione una opción: ");
+        System.out.println("1-Agregar un cliente");
+        System.out.println("2-Eliminar un cliente");
+        System.out.println("3-Modificar un cliente");
+        System.out.println("4-Mostrar clientes");
+        System.out.println("0-Volver al menu anterior");
+
         int resp = dat.nextInt();
         return resp;
     }
@@ -155,37 +155,36 @@ public class Vista {
     }
     
     public static Cliente modificarCliente(ArrayList<Cliente> listaClientes) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese el ID del cliente a modificar: ");
-        int id = scanner.nextInt();
-        
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Ingrese el ID del cliente a modificar: ");
+    int id = scanner.nextInt();
 
-                
-            Cliente cliente = listaClientes.get(i);
-            
-            if(cliente.getIdCliente()==id){
-                scanner.nextLine(); // Consumir el salto de línea
-                System.out.print("Ingrese el nuevo nombre del cliente: ");
-                String nuevoNombre = scanner.nextLine();
+    for (int i = 0; i < listaClientes.size(); i++) {
+        Cliente cliente = listaClientes.get(i);
+        if (cliente.getIdCliente() == id) {
+            scanner.nextLine(); // Consumir el salto de línea
+            System.out.print("Ingrese el nuevo nombre del cliente: ");
+            String nuevoNombre = scanner.nextLine();
 
-                System.out.print("Ingrese el nuevo teléfono del cliente: ");
-                int nuevoTelefono = scanner.nextInt();
+            System.out.print("Ingrese el nuevo teléfono del cliente: ");
+            int nuevoTelefono = scanner.nextInt();
 
-                scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine(); // Consumir el salto de línea
 
-                System.out.print("Ingrese la nueva dirección del cliente: ");
-                String nuevaDireccion = scanner.nextLine();
-                
-                Cliente cliente2 = new Cliente (nuevoNombre,id,nuevoTelefono,nuevaDireccion);            
-                return cliente2;
-            } 
-                
-                
-            
-        
-        System.out.println("Cliente no encontrado. No se pudo modificar.");
-        return null;
+            System.out.print("Ingrese la nueva dirección del cliente: ");
+            String nuevaDireccion = scanner.nextLine();
+
+            // Crear un nuevo objeto Cliente con los valores modificados
+            Cliente clienteModificado = new Cliente(nuevoNombre, id, nuevoTelefono, nuevaDireccion);
+
+            System.out.println("Cliente modificado exitosamente.");
+            return clienteModificado;
+        }
     }
+    
+    System.out.println("Cliente no encontrado. No se pudo modificar.");
+    return null;
+}
 
     public static void mostrarListaClientes(ArrayList<Cliente> listaClientes) {
         if (listaClientes.isEmpty()) {
@@ -202,13 +201,50 @@ public class Vista {
     public static int menuVenta(){
          Scanner dat = new Scanner(System.in);
         System.out.println("Menú de venta:");
-        System.out.println("1. Agregar un cliente");
-        System.out.println("2. Eliminar un cliente");
-        System.out.println("3. Modificar un cliente");
-        System.out.println("4. Mostrar clientes");
-        System.out.println("5. Salir");
-        System.out.print("Seleccione una opción: ");
+        System.out.println("1-Generar Venta");
+        System.out.println("2-Mostrar Ventas");
+        System.out.println("0-Salir");
         int resp = dat.nextInt();
         return resp;
     }
+    
+    public static Factura venderProducto(ArrayList<Producto> listaProductos, ArrayList<Cliente> listaClientes) {
+        Scanner lector = new Scanner(System.in);
+        System.out.print("Ingrese el nombre del producto que desea comprar: ");
+        String nombreProducto = lector.nextLine();
+
+        System.out.print("Ingrese el ID del cliente que realiza la compra: ");
+        int idCliente = lector.nextInt();
+
+        System.out.print("Ingrese la cantidad de productos vendidos: ");
+        int cantidad = lector.nextInt();
+
+        Producto productoVendido = null;
+        Cliente clienteComprador = null;
+
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equals(nombreProducto)) {
+                productoVendido = producto;
+                break;
+            }
+        }
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getIdCliente() == idCliente) {
+                clienteComprador = cliente;
+                break;
+            }
+        }
+
+        if (productoVendido != null && clienteComprador != null) {
+            // Generar una nueva factura para representar la venta
+            Factura factura = new Factura(productoVendido, clienteComprador, cantidad);
+            return factura;
+        } else {
+            System.out.println("Producto o cliente no encontrado. No se pudo completar la venta.");
+            return null;
+        }
+    }
+
+
 }

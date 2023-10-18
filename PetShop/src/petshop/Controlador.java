@@ -9,76 +9,92 @@ public class Controlador {
         Modelo.cargarProductos(); // Cargar productos y clientes al inicio
         Modelo.cargarClientes();
         int opt = 0;
+        
         while (opt != 4) {
-            // menú principal
+            // Menú principal
             opt = Vista.menuPrincipal();
 
             if (opt == 1) {
-                System.out.println("\nSeleccionaste Menú Producto");
-                int resp = Vista.menuProducto();
+                // Menú de productos
+                int resp = 0;
+                while (resp != 5) {
+                    System.out.println("\nSeleccionaste Menú Producto");
+                    resp = Vista.menuProducto();
 
-                if (resp == 1) {
-                    System.out.println("Seleccionaste agregar un nuevo producto");
-                    Producto producto = Vista.menuNuevoProducto();
-                    Modelo.agregarProducto(producto);
-                } else if (resp == 2) {
-                    System.out.println("\nSeleccionaste mostrar productos");
-                    ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
-                    Vista.mostrarListaProducto(busqueda);
-                } else if (resp == 3) {
-                    System.out.println("Seleccionaste Modificar producto");
-                    ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
-                    
-                    Producto productoModificado = Vista.modificarProducto(busqueda);
-                    if (productoModificado != null) {
-                        // El producto fue modificado, puedes realizar cualquier acción adicional aquí
-                        System.out.println("Producto modificado: " + productoModificado);
-                        Modelo.agregarProducto(productoModificado);
-                    }
-                } else if (resp == 4) {
-                    System.out.println("Seleccionaste Eliminar producto");
-                    ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
-                    Producto productoEliminado = Vista.eliminarProducto(busqueda);
-                    if (productoEliminado != null) {
-                        // El producto fue eliminado, puedes realizar cualquier acción adicional aquí
-                        System.out.println("Producto eliminado: " + productoEliminado);
+                    if (resp == 1) {
+                        System.out.println("Seleccionaste agregar un nuevo producto");
+                        Producto producto = Vista.menuNuevoProducto();
+                        Modelo.agregarProducto(producto);
+                    } else if (resp == 2) {
+                        System.out.println("\nSeleccionaste mostrar productos");
+                        ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
+                        Vista.mostrarListaProducto(busqueda);
+                    } else if (resp == 3) {
+                        System.out.println("Seleccionaste Modificar producto");
+                        ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
+                        Producto productoModificado = Vista.modificarProducto(busqueda);
+                        if (productoModificado != null) {                       
+                            System.out.println("Producto modificado: " + productoModificado);
+                            Modelo.modificarProducto(productoModificado);
+                        }
+                    } else if (resp == 4) {
+                        System.out.println("Seleccionaste Eliminar producto");
+                        ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
+                        Producto productoEliminado = Vista.eliminarProducto(busqueda);
+                        if (productoEliminado != null) {
+                            System.out.println("Producto eliminado.");
+                            Modelo.eliminarProducto(productoEliminado);
+                        }
+                    } else if (resp == 0) {
+                        break;  // vuelve al menú principal
                     }
                 }
             } else if (opt == 2) {
-                // Opción para trabajar con clientes
-                System.out.println("\nSeleccionaste Menú Cliente");
-                int resp = Vista.menuCliente();
+                // Menú de clientes
+                int resp = 0;
+                while (resp != 5) {
+                    System.out.println("\nSeleccionaste Menú Cliente");
+                    resp = Vista.menuCliente();
 
-                if (resp == 1) {
-                    System.out.println("Seleccionaste agregar un nuevo cliente");
-                    Cliente cliente = Vista.agregarNuevoCliente();
-                    Modelo.agregarCliente(cliente);
-                } else if (resp == 2) {
-                    System.out.println("Seleccionaste eliminar un cliente");
-                    
-                    ArrayList<Cliente> busqueda = Modelo.buscarArrayClien();
-                    Cliente clienteEliminado = Vista.eliminarCliente(busqueda);
-                    if (clienteEliminado != null) {
-                        System.out.println("Cliente eliminado : " + clienteEliminado);
+                    if (resp == 1) {
+                        System.out.println("Seleccionaste agregar un nuevo cliente");
+                        Cliente cliente = Vista.agregarNuevoCliente();
+                        Modelo.agregarCliente(cliente);
+                    } else if (resp == 2) {
+                        System.out.println("Seleccionaste eliminar un cliente");
+                        ArrayList<Cliente> busqueda = Modelo.buscarArrayClien();
+                        Cliente clienteEliminado = Vista.eliminarCliente(busqueda);
+                        if (clienteEliminado != null) {
+                            System.out.println("Cliente eliminado: " + clienteEliminado);
+                            Modelo.eliminarCliente(clienteEliminado);
+                        }
+                    } else if (resp == 3) {
+                        System.out.println("Seleccionaste modificar un cliente");
+                        ArrayList<Cliente> busqueda = Modelo.buscarArrayClien();
+                        Cliente clienteModificado = Vista.modificarCliente(busqueda);
+                        if (clienteModificado != null ) {
+                            System.out.println("Cliente modificado: " + clienteModificado);
+                            Modelo.modificarCliente(clienteModificado);
+                        }
+                    } else if (resp == 4) {
+                        System.out.println("Seleccionaste mostrar clientes");
+                        ArrayList<Cliente> busquedaa = Modelo.buscarArrayClien();
+                        Vista.mostrarListaClientes(busquedaa);
+                    } else if (resp == 0) {
+                        break;  // vuelve al menú principal
                     }
-
-                } else if (resp == 3) {
-                    System.out.println("Seleccionaste modificar un cliente");
-                    ArrayList<Cliente> busqueda = Modelo.buscarArrayClien();
-                    Cliente clienteModificado = Vista.modificarCliente(busqueda);
-                    if (clienteModificado != null ) {
-                        System.out.println("Cliente modificado: " + clienteModificado);
-                         Modelo.agregarCliente(clienteModificado);
-                    }
-                } else if (resp == 4) {
-                    System.out.println("Seleccionaste mostrar clientes");
-                    ArrayList<Cliente> busquedaa = Modelo.buscarArrayClien();
-                    Vista.mostrarListaClientes(busquedaa);
-                } else if (resp == 5) {
-                    System.out.println("Saliendo del programa...");
-                } else {
-                    System.out.println("Opción no válida. Intente de nuevo.");
                 }
+            }else if (opt == 3) {
+
+                System.out.println("\nSeleccionaste Menú ventas");
+
+                        ArrayList<Producto> busqueda = Modelo.buscarArrayProd();
+                        ArrayList<Cliente> busquedaa = Modelo.buscarArrayClien();
+                        Vista.mostrarListaProducto(busqueda);
+                        Vista.mostrarListaClientes(busquedaa);
+                        Vista.venderProducto(busqueda,busquedaa);
+                        //Modelo.
+
             }
         }
     }

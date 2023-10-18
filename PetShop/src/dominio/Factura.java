@@ -2,37 +2,48 @@ package dominio;
 
 import java.util.Random;
 
+public class Factura {
 
-public class Factura  {
-
-    private int cantidad;
     private int codigoFactura;
+    private Producto productoVendido;
+    private Cliente clienteComprador;
+    private int cantidad;
 
-    public Factura( double precio, int cantidad) {
+    public Factura(Producto productoVendido, Cliente clienteComprador, int cantidad) {
+        this.productoVendido = productoVendido;
+        this.clienteComprador = clienteComprador;
         this.cantidad = cantidad;
         this.codigoFactura = generarCodigoFactura();
     }
 
-    private int generarCodigoFactura() {
-        // Generar un código aleatorio de factura
-        Random rand = new Random();
-        return rand.nextInt(10000) + 1000; // Números entre 1000 y 19999
-    }
-    
     @Override
     public String toString() {
-        return "Factura{" + "cantidad=" + cantidad + ", codigoFactura=" + codigoFactura + '}';
+        return "Factura{" +
+               "codigoFactura=" + codigoFactura +
+               ", productoVendido=" + productoVendido +
+               ", clienteComprador=" + clienteComprador +
+               ", cantidad=" + cantidad +
+               '}';
+    }
+
+    public int getCodigoFactura() {
+        return codigoFactura;
+    }
+
+    public Producto getProductoVendido() {
+        return productoVendido;
+    }
+
+    public Cliente getClienteComprador() {
+        return clienteComprador;
     }
 
     public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public int getCodigoFactura() {
-        return codigoFactura;
+    private int generarCodigoFactura() {
+        // Generar un código de factura único, por ejemplo, utilizando números aleatorios
+        return new Random().nextInt(10000); // Puedes personalizar esto según tus necesidades.
     }
 }
