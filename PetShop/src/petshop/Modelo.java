@@ -5,6 +5,7 @@ import dominio.Factura;
 import java.util.ArrayList;
 import java.util.Iterator;
 public class Modelo {
+ 
     public static void cargarProductos() {
         ArrayList<Producto> productos = getItemProductos("archivo_producto.txt");
         if (productos != null) {

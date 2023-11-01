@@ -20,7 +20,6 @@ public class Vista {
         return resp;
     }
 
-    // Menú de productos
     public static int menuProducto() {
         Scanner datos = new Scanner(System.in);
         System.out.println("1-Añadir producto");
@@ -32,7 +31,6 @@ public class Vista {
         return opt;
     }
 
-    // Opción 1 de menuProducto
     public static Producto menuNuevoProducto() {
         Scanner datos = new Scanner(System.in);
         System.out.println("Ingrese el nombre");
@@ -92,7 +90,7 @@ public class Vista {
     public static Producto eliminarProducto(ArrayList<Producto> listaProductos) {
         Scanner lector = new Scanner(System.in);
         System.out.print("Ingrese el nombre del producto a eliminar: ");
-        String nombre = lector.next();
+        String nombre = lector.nextLine();
 
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equalsIgnoreCase(nombre)) {

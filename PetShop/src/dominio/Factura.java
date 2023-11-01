@@ -18,12 +18,11 @@ public class Factura implements Serializable{
 
     @Override
     public String toString() {
-        return "Factura{" +
-               "codigoFactura=" + codigoFactura +
-               ", productoVendido=" + productoVendido +
-               ", clienteComprador=" + clienteComprador +
-               ", cantidad=" + cantidad +
-               '}';
+        return
+               "\n CodigoFactura: " + codigoFactura +
+               "\n ProductoVendido: " + productoVendido +
+               "\n  clienteComprador: " + clienteComprador +
+               "\n cantidad: " + cantidad ;
     }
 
     public int getCodigoFactura() {
@@ -43,7 +42,6 @@ public class Factura implements Serializable{
     }
 
     private int generarCodigoFactura() {
-        // Generar un código de factura único, por ejemplo, utilizando números aleatorios
-        return new Random().nextInt(10000); // Puedes personalizar esto según tus necesidades.
+        return new Random().nextInt(10000);
     }
 }
