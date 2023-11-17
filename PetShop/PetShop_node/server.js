@@ -1,17 +1,17 @@
 const express = require("express");
 const app = express();
-const path = require('path')
+const path = require('path');
 
 const Controlador = require('./controlador');
 
 app.use(express.json());
-app.use(express.urlencoded({extended : false}))
+app.use(express.urlencoded({extended : false}));
 
-const port = 3000;
+
 
 app.get('/', (req,res)=>{
     //res.send('<h1>Hola Genteeee....!!!');
-    res.sendFile(path.join(__dirname,'./static/menu.html'))
+    res.sendFile(path.join(__dirname,'./static/menu.html'));
 })
 
 app.post('/nuevo', (req,res)=>{
@@ -20,9 +20,9 @@ app.post('/nuevo', (req,res)=>{
     req.body.impuestos == undefined ? req.body.impuestos = false : req.body.impuestos = true;
     console.log(req.body);
     Controlador.nuevo(req.body);
-    res.sendFile(path.join(__dirname,'./static/menu.html'))
+    res.sendFile(path.join(__dirname,'./static/menu.html'));
 })
-
+const port = 3000;
 app.listen(port, ()=>{
-    console.log('Escuchando en el puerto ${port}')
-});
+    console.log(`express listen en puerto ${port}!`);
+})
