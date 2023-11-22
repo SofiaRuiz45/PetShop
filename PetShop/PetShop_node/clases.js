@@ -1,9 +1,9 @@
-class Mercaderia{
-    constructor(nom, cant, imp){
-        this.nombre = nom;
-        this.cantidad = cant;
-        this.impuestos = imp;
+class Producto{
+    constructor(nom, pre, cat){
+        this.Nombre = nom;
+        this.Precio = pre;
+        this.categoria = cat;
     }
 }
 
-module.exports = {Mercaderia}
+module.exports = {Producto}
