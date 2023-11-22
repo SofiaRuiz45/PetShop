@@ -27,3 +27,13 @@ app.listen(port, ()=>{
     console.log(`express listen en puerto ${port}!`);
     
 })
+
+app.get('/buscar', (req, res) => {
+    console.log("--get/buscar--[server]");
+
+    const productosGuardados = Controlador.buscar();
+
+    console.log(productosGuardados);
+
+    res.send(`<pre>${JSON.stringify(productosGuardados, null, 2)}</pre>`);
+});

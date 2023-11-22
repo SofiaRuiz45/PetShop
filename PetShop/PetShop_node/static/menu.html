@@ -63,7 +63,7 @@
     <h2>Menú de Productos:</h2>
     <h3>Agregar Nuevo Producto</h3>
 
-    <form action="http://localhost:5000/home" method="POST">
+    <form action="http://localhost:3000/nuevo" method="POST">
         <label>Nombre:</label>
         <input type="text" name="Nombre" required>
 
@@ -71,10 +71,14 @@
         <input type="text" name="Precio" required>
 
         <label>Categoría:</label>
-        <input type="text" name="Categoría" required>
+        <input type="text" name="Categoria" required>
 
         <input type="submit" value="Enviar">
     </form>
+
+    <form action="http://localhost:3000/buscar" method="GET">
+    <input type="submit" value="Mostrar Productos Guardados">
+</form>
 
     <script src="" async defer></script>
 </body>

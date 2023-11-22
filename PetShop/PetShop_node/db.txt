@@ -1,1 +1,1 @@
-[{"nombre":"aa","cantidad":2,"impuestos":true},{"nombre":"aa","cantidad":2,"impuestos":true}]
+[{"Nombre":"Alimento Dog Chow","Precio":500,"Categoria":"Alimento"},{"Nombre":"perricat","Precio":2142,"Categoria":"alimento"},{"Nombre":"a","Precio":3455,"Categoria":"accesorios"}]

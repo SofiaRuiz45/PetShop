@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --ignore feedback.json server.js"
+    "dev": "nodemon --ignore feedback.json server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,6 @@
   "dependencies": {
     "express": "^4.18.2",
     "nodemon": "^3.0.1"
-  }
+  },
+  "devDependencies": {}
 }

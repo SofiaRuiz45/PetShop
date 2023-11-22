@@ -15,3 +15,14 @@ function guardar(data){
 }
 
 module.exports = {guardar}
+
+function buscar(){
+    let str_mercaderias = fs.readFileSync('./db.txt','utf-8')
+    let mercaderias = []
+    if(str_mercaderias){
+        mercaderias = JSON.parse(str_mercaderias)
+    }
+    return mercaderias;
+}
+
+module.exports = {guardar, buscar}
