@@ -30,10 +30,16 @@ app.listen(port, ()=>{
 
 app.get('/buscar', (req, res) => {
     console.log("--get/buscar--[server]");
-
     const productosGuardados = Controlador.buscar();
 
-    console.log(productosGuardados);
+    // aca se muestra como una tabla html
+    let htmlTable = '<table border="1"><tr><th>Nombre</th><th>Precio</th><th>Categoria</th></tr>';
+    productosGuardados.forEach(producto => {
+        htmlTable += `<tr><td>${producto.Nombre}</td>
+                          <td>${producto.Precio}</td>
+                          <td>${producto.Categoria}</td></tr>`;
+    });
+    htmlTable += '</table>';
 
-    res.send(`<pre>${JSON.stringify(productosGuardados, null, 2)}</pre>`);
+    res.send(htmlTable);
 });
